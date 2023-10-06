@@ -18,79 +18,82 @@ form.addEventListener('submit', e => {
 
 const myLibrary = []
 
-function Book(title, author, read) {
+function Book(title, author, yes, no) {
   this.title = title;
   this.author = author;
-  this.read = read;
+  this.yes = yes;
+  this.no = no;
 }
 
 function addBookTolibrary() {
   let title = document.querySelector('[data-title]').value;
   let author = document.querySelector('[data-author]').value;
-  let read = document.querySelector('[data-read]').checked;
+  let yes = document.querySelector('[data-read-yes]').value;
+  let no = document.querySelector('[data-read-no]').value;
   let newBook = new Book(title, author, read);
   myLibrary.push(newBook);
+  console.log(newBook)
 }
 
-function displayBook() {
-  function ElMaker(type, content, arr) {
-    this.element = document.createElement(type);
-    this.element.textContent = content;
-    arr.push(this.element);
-  }
+// function displayBook() {
+//   function ElMaker(type, content, arr) {
+//     this.element = document.createElement(type);
+//     this.element.textContent = content;
+//     arr.push(this.element);
+//   }
   
-  let lastObj = myLibrary[myLibrary.length -1];
+//   let lastObj = myLibrary[myLibrary.length -1];
 
-  let arrDivValue = [];
-  let arrDivLabel = [];
-  let boolean = lastObj.read;
+//   let arrDivValue = [];
+//   let arrDivLabel = [];
+//   let boolean = lastObj.read;
 
-  let valueTitle = new ElMaker('span', `${lastObj.title}`, arrDivValue);
-  let valueAuthor = new ElMaker('span', `${lastObj.author}`, arrDivValue);
-  let valueRead = new ElMaker('span', ``, arrDivValue);
+//   let valueTitle = new ElMaker('span', `${lastObj.title}`, arrDivValue);
+//   let valueAuthor = new ElMaker('span', `${lastObj.author}`, arrDivValue);
+//   let valueRead = new ElMaker('span', ``, arrDivValue);
 
-  let labelTitle = new ElMaker('div', 'Title: ', arrDivLabel);
-  let labelAuthor = new ElMaker('div', 'Author: ', arrDivLabel);
-  let labelRead = new ElMaker('button', 'Read ', arrDivLabel);
+//   let labelTitle = new ElMaker('div', 'Title: ', arrDivLabel);
+//   let labelAuthor = new ElMaker('div', 'Author: ', arrDivLabel);
+//   let labelRead = new ElMaker('button', 'Read ', arrDivLabel);
 
-  let divContainer = document.createElement('div');
-  let deleteButton = document.createElement('button');
-  deleteButton.textContent = 'del';
+//   let divContainer = document.createElement('div');
+//   let deleteButton = document.createElement('button');
+//   deleteButton.textContent = 'del';
   
-  bookContainer.appendChild(divContainer); 
+//   bookContainer.appendChild(divContainer); 
 
-  arrDivLabel.forEach(el => divContainer.appendChild(el));
-  divContainer.appendChild(deleteButton)
-  for (let i = 0; i < 3; i += 1) {
-    let elChild = arrDivValue[i];
-    let elParent = arrDivLabel[i];
-    elParent.appendChild(elChild);
-  }
+//   arrDivLabel.forEach(el => divContainer.appendChild(el));
+//   divContainer.appendChild(deleteButton)
+//   for (let i = 0; i < 3; i += 1) {
+//     let elChild = arrDivValue[i];
+//     let elParent = arrDivLabel[i];
+//     elParent.appendChild(elChild);
+//   }
   
-  const toggleButton = document.querySelector('div + button');
-  toggleButton.addEventListener('click', e => {
+//   const toggleButton = document.querySelector('div + button');
+//   toggleButton.addEventListener('click', e => {
     
-    boolean = !boolean;
-    toggle();
-  })
+//     boolean = !boolean;
+//     toggle();
+//   })
 
-  function toggle() {
-    let toggleButtons = document.querySelectorAll('div + button')
-    toggleButtons.forEach(el => {
-      if (boolean) {
-        el.classList.add('green-toggle');
-        el.classList.remove('red-toggle');
-      } else {
-        el.classList.add('red-toggle');
-        el.classList.remove('green-toggle');
-      }
-    })
-  }
+//   function toggle() {
+//     let toggleButtons = document.querySelectorAll('div + button')
+//     toggleButtons.forEach(el => {
+//       if (boolean) {
+//         el.classList.add('green-toggle');
+//         el.classList.remove('red-toggle');
+//       } else {
+//         el.classList.add('red-toggle');
+//         el.classList.remove('green-toggle');
+//       }
+//     })
+//   }
 
-  toggle();
-  deleteButton.addEventListener('click', e => {
-    console.log(e);
-    const delDiv = document.querySelector('[data-book-container] div');
-    delDiv.remove();
-  })
-}
+//   toggle();
+//   deleteButton.addEventListener('click', e => {
+//     console.log(e);
+//     const delDiv = document.querySelector('[data-book-container] div');
+//     delDiv.remove();
+//   })
+// }
