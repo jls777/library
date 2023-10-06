@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Library</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <div class="main-container">
+    <h1>My Library</h1>
+    <button data-add-button class="add-button">add</button>
+    <dialog data-dialog>
+      <button data-close-button class="close-button">x</button>
+      <form data-form>
+        <div>
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" required data-title>
+        </div>
+        <div>
+          <label for="author">Author</label>
+          <input type="text" id="author" name="author" required data-author>
+        </div>
+        <div>
+          <label for="read">Read</label>
+          <input type="checkbox" id="read" name="read" data-read>
+        </div>
+        <div>
+          <button type="submit">submit</button>
+          <button type="reset">reset</button>
+        </div>
+      </form>
+    </dialog>
+    <div data-book-container class="book-container"></div>
+  </div>
+</body>
+</html>
