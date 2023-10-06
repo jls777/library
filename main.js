@@ -11,26 +11,24 @@ closeButton.addEventListener('click', () => dialog.close());
 form.addEventListener('submit', e => {
   e.preventDefault();
   addBookTolibrary();
-  displayBook();
+  // displayBook();
   dialog.close();
   form.reset();
 });
 
 const myLibrary = []
 
-function Book(title, author, yes, no) {
+function Book(title, author, radio) {
   this.title = title;
   this.author = author;
-  this.yes = yes;
-  this.no = no;
+  this.radio = radio;
 }
 
 function addBookTolibrary() {
   let title = document.querySelector('[data-title]').value;
   let author = document.querySelector('[data-author]').value;
-  let yes = document.querySelector('[data-read-yes]').value;
-  let no = document.querySelector('[data-read-no]').value;
-  let newBook = new Book(title, author, read);
+  let radio = document.querySelector('input[type="radio"]').value;
+  let newBook = new Book(title, author, radio);
   myLibrary.push(newBook);
   console.log(newBook)
 }
