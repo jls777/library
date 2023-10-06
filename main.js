@@ -33,6 +33,14 @@ function addBookTolibrary() {
   console.log(newBook)
 }
 
+function displayBook() {
+  function elMaker(elName, type, content, arr) {
+    let elName = document.createElement(type);
+    elName.textContent = content;
+    arr.push(elName);
+  }
+}
+
 // function displayBook() {
 //   function ElMaker(type, content, arr) {
 //     this.element = document.createElement(type);
