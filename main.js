@@ -4,20 +4,18 @@ const closeButton = document.querySelector('[data-close-button]');
 const form = document.querySelector('[data-form]');
 const bookContainer = document.querySelector('[data-book-container]');
 
-
-
 addButton.addEventListener('click', () => dialog.showModal());
 closeButton.addEventListener('click', () => dialog.close()); 
 form.addEventListener('submit', e => {
   e.preventDefault();
   addBookTolibrary();
-  // displayBook();
+  displayBook();
   dialog.close();
   form.reset();
 });
 
 const myLibrary = []
-
+console.log(myLibrary)
 function Book(title, author, radio) {
   this.title = title;
   this.author = author;
@@ -27,19 +25,56 @@ function Book(title, author, radio) {
 function addBookTolibrary() {
   let title = document.querySelector('[data-title]').value;
   let author = document.querySelector('[data-author]').value;
-  let radio = document.querySelector('input[type="radio"]').value;
+  let radio = document.querySelector('input[type="radio"]:checked').value;
   let newBook = new Book(title, author, radio);
   myLibrary.push(newBook);
   console.log(newBook)
 }
 
+function ElMaker(type, content, arr) {
+  this.el = document.createElement(type);
+  this.el.texContent = content;
+  arr.push(this.el);
+}
+
+function ElMaker2(type, arr) {
+  this.el = document.createElement(type);
+  arr.push(this.el);
+}
+
 function displayBook() {
-  function elMaker(elName, type, content, arr) {
-    let elName = document.createElement(type);
-    elName.textContent = content;
-    arr.push(elName);
+  for (let i = 0; i < myLibrary.length ; i += 1) {
+    const arrValue = [];
+    const arrLabel = [];
+    const arrDiv = [];
+    
+    const valueTitle = new ElMaker('div', `${myLibrary[i].title}`, arrValue);
+    const valueAuthor = new ElMaker('div', `${myLibrary[i].Author}`, arrValue);
+    const valueRadio = new ElMaker('div', `${myLibrary[i].radio}`, arrValue);
+
+    const labelTitle = new ElMaker('div', 'Title: ', arrLabel);
+    const labelAuthor = new ElMaker('div', 'Author: ', arrLabel);
+    const labelMark = new ElMaker('div', 'Mark as read: ', arrLabel);
+    
+    const labelValue1 = new ElMaker2('div', arrDiv);
+    const labelValue2 = new ElMaker2('div', arrDiv);
+    const labelValue3 = new ElMaker2('div', arrDiv);
+
+    const divContent = document.createElement('div');
+    bookContainer.appendChild(divContent);
+    let label = arrLabel[0]
+    divContent.appendChild(label);
   }
 }
+
+
+
+
+
+
+
+
+
 
 // function displayBook() {
 //   function ElMaker(type, content, arr) {
