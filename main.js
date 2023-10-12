@@ -43,6 +43,7 @@ function ElMaker2(type, arr) {
 }
 
 function displayBook() {
+  bookContainer.textContent = '';
   for (let i = 0; i < myLibrary.length ; i += 1) {
     const arrValue = [];
     const arrLabel = [];
@@ -58,7 +59,7 @@ function displayBook() {
 
     const labelTitle = new ElMaker('div', 'Title: ', arrLabel);
     const labelAuthor = new ElMaker('div', 'Author: ', arrLabel);
-    const labelMark = new ElMaker('div', 'Mark as read: ', arrLabel);
+    const labelMark = new ElMaker('div', 'Marked as read: ', arrLabel);
     
     const labelValue1 = new ElMaker2('div', arrDiv);
     const labelValue2 = new ElMaker2('div', arrDiv);
@@ -70,6 +71,9 @@ function displayBook() {
       divContent.appendChild(arrDiv[i]);
       arrDiv[i].append(arrLabel[i], arrValue[i]);
     }
+    const delButton = document.createElement('button');
+    delButton.textContent = 'del';
+    divContent.appendChild(delButton);
   }
 }
 
