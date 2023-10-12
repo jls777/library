@@ -47,6 +47,10 @@ function displayBook() {
     const arrValue = [];
     const arrLabel = [];
     const arrDiv = [];
+    console.log(arrValue)
+    console.log(arrLabel)
+    console.log(arrDiv)
+
     
     const valueTitle = new ElMaker('div', `${myLibrary[i].title}`, arrValue);
     const valueAuthor = new ElMaker('div', `${myLibrary[i].Author}`, arrValue);
