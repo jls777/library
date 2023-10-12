@@ -43,6 +43,7 @@ function displayBook() {
 
   let arrDivValue = [];
   let arrDivLabel = [];
+ 
   let boolean = lastObj.read;
 
   let valueTitle = new ElMaker('span', `${lastObj.title}`, arrDivValue);
