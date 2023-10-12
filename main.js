@@ -33,7 +33,7 @@ function addBookTolibrary() {
 
 function ElMaker(type, content, arr) {
   this.el = document.createElement(type);
-  this.el.texContent = content;
+  this.el.textContent = content;
   arr.push(this.el);
 }
 
@@ -53,7 +53,7 @@ function displayBook() {
 
     
     const valueTitle = new ElMaker('div', `${myLibrary[i].title}`, arrValue);
-    const valueAuthor = new ElMaker('div', `${myLibrary[i].Author}`, arrValue);
+    const valueAuthor = new ElMaker('div', `${myLibrary[i].author}`, arrValue);
     const valueRadio = new ElMaker('div', `${myLibrary[i].radio}`, arrValue);
 
     const labelTitle = new ElMaker('div', 'Title: ', arrLabel);
@@ -66,8 +66,10 @@ function displayBook() {
 
     const divContent = document.createElement('div');
     bookContainer.appendChild(divContent);
-    let label = arrLabel[0]
-    divContent.appendChild(label);
+    for (let i = 0; i < 3; i += 1) {
+      divContent.appendChild(arrDiv[i]);
+      arrDiv[i].append(arrLabel[i], arrValue[i]);
+    }
   }
 }
 
