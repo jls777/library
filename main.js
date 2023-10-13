@@ -68,7 +68,8 @@ function displayBook() {
     }
 
     const editButton = document.createElement('button');
-    editButton.classList.add('edit', `${i}`);
+    editButton.classList.add(`${i}`);
+    editButton.setAttribute('id', 'edit');
     editButton.textContent = 'edit';
     divContent.appendChild(editButton);
   }
