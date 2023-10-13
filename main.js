@@ -48,32 +48,29 @@ function displayBook() {
     const arrValue = [];
     const arrLabel = [];
     const arrDiv = [];
-    console.log(arrValue)
-    console.log(arrLabel)
-    console.log(arrDiv)
-
     
     const valueTitle = new ElMaker('div', `${myLibrary[i].title}`, arrValue);
     const valueAuthor = new ElMaker('div', `${myLibrary[i].author}`, arrValue);
     const valueRadio = new ElMaker('div', `${myLibrary[i].radio}`, arrValue);
-    const delButton = new ElMaker('button', 'del', arrValue);
 
     const labelTitle = new ElMaker('div', 'Title: ', arrLabel);
     const labelAuthor = new ElMaker('div', 'Author: ', arrLabel);
     const labelMark = new ElMaker('div', 'Marked as read: ', arrLabel);
-    const editButton = new ElMaker('button', 'edit', arrLabel);
     
     const labelValue1 = new ElMaker2('div', arrDiv);
     const labelValue2 = new ElMaker2('div', arrDiv);
     const labelValue3 = new ElMaker2('div', arrDiv);
-    const editDel = new ElMaker2('div', arrDiv);
 
     const divContent = document.createElement('div');
     bookContainer.appendChild(divContent);
-    for (let i = 0; i < 4; i += 1) {
+    for (let i = 0; i < 3; i += 1) {
       divContent.appendChild(arrDiv[i]);
       arrDiv[i].append(arrLabel[i], arrValue[i]);
     }
+
+    const editButton = document.createElement('button');
+    editButton.textContent = 'edit';
+    divContent.appendChild(editButton);
   }
 }
 
