@@ -28,7 +28,6 @@ function addBookTolibrary() {
   let radio = document.querySelector('input[type="radio"]:checked').value;
   let newBook = new Book(title, author, radio);
   myLibrary.push(newBook);
-  console.log(newBook)
 }
 
 function ElMaker(type, content, arr) {
@@ -69,6 +68,7 @@ function displayBook() {
     }
 
     const editButton = document.createElement('button');
+    editButton.classList.add('edit', `${i}`);
     editButton.textContent = 'edit';
     divContent.appendChild(editButton);
   }
