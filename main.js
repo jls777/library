@@ -50,10 +50,6 @@ function ElMaker2(type, arr) {
 }
 
 
-// function deleteBook(index) {
-//   myLibrary.splice(index, 1);
-// }
-
 function displayBook() {
   bookContainer.textContent = '';
   for (let i = 0; i < myLibrary.length ; i += 1) {
@@ -66,23 +62,19 @@ function displayBook() {
     
     const valueTitle = new ElMaker('div', `${myLibrary[i].title}`, arrValue);
     const valueAuthor = new ElMaker('div', `${myLibrary[i].author}`, arrValue);
-    const valueRadio = new ElMaker('div', `${myLibrary[i].radio}`, arrValue);
+    const valueToggle = new ElMaker('button', 'toggle', arrValue);
 
     const labelTitle = new ElMaker('div', 'Title: ', arrLabel);
     const labelAuthor = new ElMaker('div', 'Author: ', arrLabel);
-    const labelMark = new ElMaker('div', 'Marked as read: ', arrLabel);
+    const labelToggle = new ElMaker('div', 'Mark as read: ', arrLabel);
     
     const labelValue1 = new ElMaker2('div', arrDiv);
     const labelValue2 = new ElMaker2('div', arrDiv);
-    const labelValue3 = new ElMaker2('div', arrDiv);
+    const toggleDiv = new ElMaker2('div', arrDiv);
 
-    const divContent = document.createElement('div');
-    bookContainer.appendChild(divContent);
-    for (let i = 0; i < 3; i += 1) {
-      divContent.appendChild(arrDiv[i]);
-      arrDiv[i].append(arrLabel[i], arrValue[i]);
-    }
+    const divContent = document.createElement('div');//div card container
 
+//----------append del button and del card----------------------------
     const delButton = document.createElement('button');
     delButton.classList.add(`${i}`);
     delButton.setAttribute('id', 'del');
@@ -94,6 +86,13 @@ function displayBook() {
       myLibrary.splice(index, 1);
       displayBook()
     });
+//--------------------------------------------------
+//---------------append title author toggle and display book-------
+    bookContainer.appendChild(divContent);
+    for (let i = 0; i < 3; i += 1) {
+      divContent.appendChild(arrDiv[i]);
+      arrDiv[i].append(arrLabel[i], arrValue[i]);
+    }
   }
 }
 
