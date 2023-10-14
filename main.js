@@ -19,10 +19,11 @@ form.addEventListener('submit', e => {
   displayBook();
   dialog.close();
   form.reset();
+  console.log(myLibrary);
 });
 
-const myLibrary = []
-console.log(myLibrary)
+const myLibrary = [];
+
 function Book(title, author, radio) {
   this.title = title;
   this.author = author;
@@ -48,13 +49,17 @@ function ElMaker2(type, arr) {
   arr.push(this.el);
 }
 
-function deleteBook(index) {
-  myLibrary.splice(index, 1);
-}
+
+// function deleteBook(index) {
+//   myLibrary.splice(index, 1);
+// }
 
 function displayBook() {
   bookContainer.textContent = '';
   for (let i = 0; i < myLibrary.length ; i += 1) {
+
+    myLibrary[i].id = i;
+
     const arrValue = [];
     const arrLabel = [];
     const arrDiv = [];
@@ -78,21 +83,19 @@ function displayBook() {
       arrDiv[i].append(arrLabel[i], arrValue[i]);
     }
 
-    const editButton = document.createElement('button');
-    editButton.classList.add(`${i}`);
-    editButton.setAttribute('id', 'edit');
-    editButton.textContent = 'edit';
-    divContent.appendChild(editButton);
+    const delButton = document.createElement('button');
+    delButton.classList.add(`${i}`);
+    delButton.setAttribute('id', 'del');
+    delButton.textContent = 'del';
+    divContent.appendChild(delButton);
 
-    editButton.addEventListener('click', e => {
-      
-    })
+    delButton.addEventListener('click', e =>{
+      let index = e.target.classList.value;
+      myLibrary.splice(index, 1);
+      displayBook()
+    });
   }
 }
-
-
-
-
 
 
 
