@@ -1,9 +1,16 @@
+// -----------------queries for form-------------------------------
 const addButton = document.querySelector('[data-add-button]');
 const dialog = document.querySelector('[data-dialog]');
 const closeButton = document.querySelector('[data-close-button]');
 const form = document.querySelector('[data-form]');
 const bookContainer = document.querySelector('[data-book-container]');
-
+//-------------------------------------------------------------
+// -----------------queries for edit------------------------------
+const editDialog = document.querySelector('[data-edit-dialog]');
+const editClosebutton = document.querySelector('[data-edit-close-button]');
+const editForm = document.querySelector('[data-edit-form]');
+//----------------------------------------------------
+//------------------------------------------------------
 addButton.addEventListener('click', () => dialog.showModal());
 closeButton.addEventListener('click', () => dialog.close()); 
 form.addEventListener('submit', e => {
@@ -25,7 +32,7 @@ function Book(title, author, radio) {
 function addBookTolibrary() {
   let title = document.querySelector('[data-title]').value;
   let author = document.querySelector('[data-author]').value;
-  let radio = document.querySelector('input[type="radio"]:checked').value;
+  let radio = document.querySelector('input[data-mark]:checked').value;
   let newBook = new Book(title, author, radio);
   myLibrary.push(newBook);
 }
@@ -39,6 +46,10 @@ function ElMaker(type, content, arr) {
 function ElMaker2(type, arr) {
   this.el = document.createElement(type);
   arr.push(this.el);
+}
+
+function deleteBook(index) {
+  myLibrary.splice(index, 1);
 }
 
 function displayBook() {
@@ -72,8 +83,13 @@ function displayBook() {
     editButton.setAttribute('id', 'edit');
     editButton.textContent = 'edit';
     divContent.appendChild(editButton);
+
+    editButton.addEventListener('click', e => {
+      
+    })
   }
 }
+
 
 
 
