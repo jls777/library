@@ -49,17 +49,13 @@ function ElMaker2(type, arr) {
 }
 //----------------function read status color toggle--------
 function readStatus(val, el) {
-  if (val === yes) {
+  if (val === "yes") {
     el.classList.add('green');
   } else {
     el.classList.add('red');
   }
 }
 //------------------------------------------------
-//------------------toggle function------------------
-function toggle() {
-  
-}
 //-------------------------------------------------
 function displayBook() {
   bookContainer.textContent = '';
@@ -120,7 +116,13 @@ function displayBook() {
     toggleDiv.appendChild(toggleButton);
 
     toggleButton.addEventListener('click', e => {
-
+      console.log(e.target.id);
+      let index = e.target.id;
+      let value = myLibrary[index].radio;
+      console.log(value);
+      if (value === 'yes') myLibrary[index].radio = 'no';
+      if (value === 'no') myLibrary[index].radio = 'yes';
+      displayBook();
     })
    //------------------------------------------ 
 
