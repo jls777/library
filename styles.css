@@ -9,10 +9,10 @@ dialog {
   border: 1px solid black;
 }
 
-.red-toggle {
+.red {
   background-color: red;
 }
 
-.green-toggle {
+.green {
   background-color: green;
 }

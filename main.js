@@ -19,7 +19,6 @@ form.addEventListener('submit', e => {
   displayBook();
   dialog.close();
   form.reset();
-  console.log(myLibrary);
 });
 
 const myLibrary = [];
@@ -38,86 +37,35 @@ function addBookTolibrary() {
   myLibrary.push(newBook);
 }
 
-<<<<<<< HEAD
-function displayBook() {
-  function ElMaker(type, content, arr) {
-    this.element = document.createElement(type);
-    this.element.textContent = content;
-    arr.push(this.element);
-  }
-  
-  let lastObj = myLibrary[myLibrary.length -1];
-
-  let arrDivValue = [];
-  let arrDivLabel = [];
- 
-  let boolean = lastObj.read;
-
-  let valueTitle = new ElMaker('span', `${lastObj.title}`, arrDivValue);
-  let valueAuthor = new ElMaker('span', `${lastObj.author}`, arrDivValue);
-  let valueRead = new ElMaker('span', ``, arrDivValue);
-
-  let labelTitle = new ElMaker('div', 'Title: ', arrDivLabel);
-  let labelAuthor = new ElMaker('div', 'Author: ', arrDivLabel);
-  let labelRead = new ElMaker('button', 'Read ', arrDivLabel);
-
-  let divContainer = document.createElement('div');
-  let deleteButton = document.createElement('button');
-  deleteButton.textContent = 'del';
-  
-  bookContainer.appendChild(divContainer); 
-
-  arrDivLabel.forEach(el => divContainer.appendChild(el));
-  divContainer.appendChild(deleteButton)
-  for (let i = 0; i < 3; i += 1) {
-    let elChild = arrDivValue[i];
-    let elParent = arrDivLabel[i];
-    elParent.appendChild(elChild);
-  }
-  
-  const toggleButton = document.querySelector('div + button');
-  toggleButton.addEventListener('click', e => {
-    
-    boolean = !boolean;
-    toggle();
-  })
-
-  function toggle() {
-    let toggleButtons = document.querySelectorAll('div + button')
-    toggleButtons.forEach(el => {
-      if (boolean) {
-        el.classList.add('green-toggle');
-        el.classList.remove('red-toggle');
-      } else {
-        el.classList.add('red-toggle');
-        el.classList.remove('green-toggle');
-      }
-    })
-  }
-
-  toggle();
-  deleteButton.addEventListener('click', e => {
-    console.log(e);
-    const delDiv = document.querySelector('[data-book-container] div');
-    delDiv.remove();
-  })
-=======
 function ElMaker(type, content, arr) {
   this.el = document.createElement(type);
   this.el.textContent = content;
   arr.push(this.el);
->>>>>>> temp
 }
 
 function ElMaker2(type, arr) {
   this.el = document.createElement(type);
   arr.push(this.el);
 }
-
-
+//----------------function read status color toggle--------
+function readStatus(val, el) {
+  if (val === yes) {
+    el.classList.add('green');
+  } else {
+    el.classList.add('red');
+  }
+}
+//------------------------------------------------
+//------------------toggle function------------------
+function toggle() {
+  
+}
+//-------------------------------------------------
 function displayBook() {
   bookContainer.textContent = '';
   for (let i = 0; i < myLibrary.length ; i += 1) {
+    let markValue = myLibrary[i].radio;
+    
 
     myLibrary[i].id = i;
 
@@ -127,105 +75,54 @@ function displayBook() {
     
     const valueTitle = new ElMaker('div', `${myLibrary[i].title}`, arrValue);
     const valueAuthor = new ElMaker('div', `${myLibrary[i].author}`, arrValue);
-    const valueToggle = new ElMaker('button', 'toggle', arrValue);
 
     const labelTitle = new ElMaker('div', 'Title: ', arrLabel);
     const labelAuthor = new ElMaker('div', 'Author: ', arrLabel);
-    const labelToggle = new ElMaker('div', 'Mark as read: ', arrLabel);
     
     const labelValue1 = new ElMaker2('div', arrDiv);
     const labelValue2 = new ElMaker2('div', arrDiv);
-    const toggleDiv = new ElMaker2('div', arrDiv);
 
     const divContent = document.createElement('div');//div card container
 
+    readStatus(markValue, divContent);
+
 //----------append del button and del card----------------------------
     const delButton = document.createElement('button');
-    delButton.classList.add(`${i}`);
-    delButton.setAttribute('id', 'del');
+    delButton.setAttribute('id', `${i}`);
     delButton.textContent = 'del';
     divContent.appendChild(delButton);
 
     delButton.addEventListener('click', e =>{
-      let index = e.target.classList.value;
+      let index = e.target.id;
       myLibrary.splice(index, 1);
-      displayBook()
+      console.log(e.target.id);
+      displayBook();
     });
 //--------------------------------------------------
-//---------------append title author toggle and display book-------
+//---------------append title author and display book-------
     bookContainer.appendChild(divContent);
-    for (let i = 0; i < 3; i += 1) {
+    for (let i = 0; i < 2; i += 1) {
       divContent.appendChild(arrDiv[i]);
       arrDiv[i].append(arrLabel[i], arrValue[i]);
     }
+//----------------------------------------------------
+//---------------append-toggle------------------------------
+    const toggleDiv = document.createElement('div');
+    divContent.appendChild(toggleDiv);
+
+    const toggleLabel = document.createElement('span');
+    toggleLabel.textContent = 'Mark as read: ';
+    toggleDiv.appendChild(toggleLabel);
+
+    const toggleButton = document.createElement('button');
+    toggleButton.textContent = 'toggle';
+    toggleButton.setAttribute('id', `${i}`);
+    toggleDiv.appendChild(toggleButton);
+
+    toggleButton.addEventListener('click', e => {
+
+    })
+   //------------------------------------------ 
+
   }
 }
-
-
-
-
-
-
-
-// function displayBook() {
-//   function ElMaker(type, content, arr) {
-//     this.element = document.createElement(type);
-//     this.element.textContent = content;
-//     arr.push(this.element);
-//   }
-  
-//   let lastObj = myLibrary[myLibrary.length -1];
-
-//   let arrDivValue = [];
-//   let arrDivLabel = [];
-//   let boolean = lastObj.read;
-
-//   let valueTitle = new ElMaker('span', `${lastObj.title}`, arrDivValue);
-//   let valueAuthor = new ElMaker('span', `${lastObj.author}`, arrDivValue);
-//   let valueRead = new ElMaker('span', ``, arrDivValue);
-
-//   let labelTitle = new ElMaker('div', 'Title: ', arrDivLabel);
-//   let labelAuthor = new ElMaker('div', 'Author: ', arrDivLabel);
-//   let labelRead = new ElMaker('button', 'Read ', arrDivLabel);
-
-//   let divContainer = document.createElement('div');
-//   let deleteButton = document.createElement('button');
-//   deleteButton.textContent = 'del';
-  
-//   bookContainer.appendChild(divContainer); 
-
-//   arrDivLabel.forEach(el => divContainer.appendChild(el));
-//   divContainer.appendChild(deleteButton)
-//   for (let i = 0; i < 3; i += 1) {
-//     let elChild = arrDivValue[i];
-//     let elParent = arrDivLabel[i];
-//     elParent.appendChild(elChild);
-//   }
-  
-//   const toggleButton = document.querySelector('div + button');
-//   toggleButton.addEventListener('click', e => {
-    
-//     boolean = !boolean;
-//     toggle();
-//   })
-
-//   function toggle() {
-//     let toggleButtons = document.querySelectorAll('div + button')
-//     toggleButtons.forEach(el => {
-//       if (boolean) {
-//         el.classList.add('green-toggle');
-//         el.classList.remove('red-toggle');
-//       } else {
-//         el.classList.add('red-toggle');
-//         el.classList.remove('green-toggle');
-//       }
-//     })
-//   }
-
-//   toggle();
-//   deleteButton.addEventListener('click', e => {
-//     console.log(e);
-//     const delDiv = document.querySelector('[data-book-container] div');
-//     delDiv.remove();
-//   })
-// }
