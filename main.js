@@ -1,3 +1,20 @@
+class Book {
+  constructor(title, author, radio) {
+    this.title = this.title;
+    this.author = author;
+    this.radio = radio;
+  }
+
+  addBookTolibrary() {
+    let title = document.querySelector('[data-title]').value;
+    let author = document.querySelector('[data-author]').value;
+    let radio = document.querySelector('input[data-mark]:checked').value;
+    let newBook = new Book(title, author, radio);
+    myLibrary.push(newBook);
+  }
+};
+const myLibrary = []
+
 // -----------------queries for form-------------------------------
 const addButton = document.querySelector('[data-add-button]');
 const dialog = document.querySelector('[data-dialog]');
@@ -21,21 +38,10 @@ form.addEventListener('submit', e => {
   form.reset();
 });
 
-const myLibrary = [];
 
-function Book(title, author, radio) {
-  this.title = title;
-  this.author = author;
-  this.radio = radio;
-}
 
-function addBookTolibrary() {
-  let title = document.querySelector('[data-title]').value;
-  let author = document.querySelector('[data-author]').value;
-  let radio = document.querySelector('input[data-mark]:checked').value;
-  let newBook = new Book(title, author, radio);
-  myLibrary.push(newBook);
-}
+
+
 
 function ElMaker(type, content, arr) {
   this.el = document.createElement(type);
