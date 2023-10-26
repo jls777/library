@@ -1,24 +1,30 @@
-class Book {
-  constructor(title, author, radio) {
-    this.title = title;
-    this.author = author;
-    this.radio = radio;
+class Library {
+  constructor() {
+    this.arrBook = [];
+    console.log(this.arrBook);
   }
-  arrBook() {
-    const arr = [];
-    arr.push(this);
-    console.log(arr);
+  getBook(title, author, radio) {
+    return {title,author,radio}
   }
-};
-const myLibrary = []
-
-function addBookTolibrary() {
-  let title = document.querySelector('[data-title]').value;
-  let author = document.querySelector('[data-author]').value;
-  let radio = document.querySelector('input[data-mark]:checked').value;
-  let newBook = new Book(title, author, radio);
-  return {newBook};
+  addBook() {
+    const title = document.querySelector('[data-title]').value;
+    const author = document.querySelector('[data-author]').value;
+    const radio = document.querySelector('input[data-mark]:checked').value;
+    const newBook = this.getBook(title, author, radio);
+    this.arrBook.push(newBook);
+    console.log(this.arrBook)
+  }
 }
+
+const myLibrary = new Library()
+
+// function addBookTolibrary() {
+//   let title = document.querySelector('[data-title]').value;
+//   let author = document.querySelector('[data-author]').value;
+//   let radio = document.querySelector('input[data-mark]:checked').value;
+//   let newBook = new Book(title, author, radio);
+//   return {newBook};
+// }
 
 
 const addButton = document.querySelector('[data-add-button]');
@@ -31,15 +37,14 @@ const editDialog = document.querySelector('[data-edit-dialog]');
 const editClosebutton = document.querySelector('[data-edit-close-button]');
 const editForm = document.querySelector('[data-edit-form]');
 
-// addButton.addEventListener('click', () => dialog.showModal());
-// closeButton.addEventListener('click', () => dialog.close()); 
-// form.addEventListener('submit', e => {
-//   e.preventDefault();
-//   addBookTolibrary();
-//   displayBook();
-//   dialog.close();
-//   form.reset();
-// });
+addButton.addEventListener('click', () => dialog.showModal());
+closeButton.addEventListener('click', () => dialog.close()); 
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  myLibrary.addBook();
+  dialog.close();
+  form.reset();
+});
 
 
 // function ElMaker(type, content, arr) {
