@@ -1,19 +1,21 @@
 class Book {
   constructor(title, author, radio) {
-    this.title = this.title;
+    this.title = title;
     this.author = author;
     this.radio = radio;
   }
 
-  addBookTolibrary() {
-    let title = document.querySelector('[data-title]').value;
-    let author = document.querySelector('[data-author]').value;
-    let radio = document.querySelector('input[data-mark]:checked').value;
-    let newBook = new Book(title, author, radio);
-    myLibrary.push(newBook);
-  }
+  
 };
 const myLibrary = []
+
+function addBookTolibrary() {
+  let title = document.querySelector('[data-title]').value;
+  let author = document.querySelector('[data-author]').value;
+  let radio = document.querySelector('input[data-mark]:checked').value;
+  let newBook = new Book(title, author, radio);
+  return {newBook};
+}
 
 // -----------------queries for form-------------------------------
 const addButton = document.querySelector('[data-add-button]');
