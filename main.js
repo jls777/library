@@ -8,24 +8,16 @@ class Library {
   }
   addBook() {
     const title = document.querySelector('[data-title]').value;
-    const author = document.querySelector('[data-author]').value;
-    const radio = document.querySelector('input[data-mark]:checked').value;
+    const author = this.queries().author.value;
+    const radio = this.queries().radio.value;
     const newBook = this.getBook(title, author, radio);
+    console.log(title);
     this.arrBook.push(newBook);
     console.log(this.arrBook)
   }
 }
 
 const myLibrary = new Library()
-
-// function addBookTolibrary() {
-//   let title = document.querySelector('[data-title]').value;
-//   let author = document.querySelector('[data-author]').value;
-//   let radio = document.querySelector('input[data-mark]:checked').value;
-//   let newBook = new Book(title, author, radio);
-//   return {newBook};
-// }
-
 
 const addButton = document.querySelector('[data-add-button]');
 const dialog = document.querySelector('[data-dialog]');
